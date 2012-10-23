@@ -1,12 +1,12 @@
-* `lotarea`: Size of lot in feet?
-* `bldgarea`: Size of building in feet?
-* `comarea`: Size of commerical area in feet?
-* `resarea`: Size of residential area in feet?
-* `officearea`: Size of office area in feet?
-* `retailarea`: Size of retail area in feet?
-* `garagearea`: Size of garage area in feet?
-* `strgearea`: Size of storage area in feet?
-* `factryarea`: Size of factory area in feet?
+* `lotarea`: Size of lot in square feet
+* `bldgarea`: Size of building in square feet
+* `comarea`: Size of commerical area in square feet
+* `resarea`: Size of residential area in square feet
+* `officearea`: Size of office area in square feet
+* `retailarea`: Size of retail area in square feet
+* `garagearea`: Size of garage area in square feet
+* `strgearea`: Size of storage area in square feet
+* `factryarea`: Size of factory area in square feet
 * `bldgclass`: Alphanumeric categorical code for building type
 * `yellow_grease_gallons_on_lot`: Number of gallons of yellow grease
 * `bldgdesc`: Verbal description of building
@@ -18,7 +18,7 @@
 * `Entity_Code_Description`: Verbal descriptipon of corresponding entity code
 * `License_Number`: Numeric license number
 * `CAMIS_ID`: Numeric idenfitier for the business entity.
-* `Current`: Boolean indicating whether license is current?
+* `Current`: Boolean indicating whether license is current
 * `Entity_License_Status`: Verbal codes for entity license status
 * `Lic_Stat_Date`: License status date in `22NOV2011:00:00:00.000` format
 * `License_Issue_Date`: Issue date for license in `22NOV2011:00:00:00.000` format
@@ -35,4 +35,4 @@
 * `Premise_Borough`: Quasinumeric code for borough
 * `Borough_Code`: Always blank
 * `restaurant_license_on_tax_lot`: Boolean indicating whether restaurant on tax lot
-* `liquor_license_on_tax_lot`: Boolean indicating whether restaurant has a liquor license
+* `liquor_license_on_tax_lot`: Boolean indicating whether business has a liquor license
