@@ -13,4 +13,5 @@ feature.names <- c("lotarea",
 				   "restaurant_license_on_tax_lot",
 				   "liquor_license_on_tax_lot")
 
+simple.features <- log.licenses[, feature.names]
 all.features <- cbind(log.licenses[, feature.names], dense.dtm)
