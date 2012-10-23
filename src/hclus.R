@@ -11,24 +11,37 @@
 # For more information on FreeBSD see: http://www.opensource.org/licenses/bsd-license.php
 # All rights reserved.
 
-setwd("../")    # Only required of you are running code directly from this file
+setwd("../")    # Only required if you are running code directly from this file
 
 library("ProjectTemplate")
 load.project()
 
 # Dissimilarty measures
 
-dissimilarityMatrix <- function(m1,m2) {
-    dissimilarity.list <- list()
-    for(i in 1:nrow(log.licenses)) {
-        dissimilarity.list[[i]] <- sapply(1:nrow(log.licenses), 
-        function(j) { 
-            return(sqrt((log.licenses[i,m1] - log.licenses[j,m2])**2))
-        })
-    }
-    return(do.call(rbind, dissimilarity.list))
+# dissimilarityMatrix <- function(m1,m2) {
+#     dissimilarity.list <- list()
+#     for(i in 1:nrow(log.licenses)) {
+#         dissimilarity.list[[i]] <- sapply(1:nrow(log.licenses), 
+#         function(j) { 
+#             return(sqrt((log.licenses[i,m1] - log.licenses[j,m2])**2))
+#         })
+#     }
+#     return(do.call(rbind, dissimilarity.list))
+# }
+# 
+# ## Attempt 1: Root-squared difference in residential area and commericial area
+
+# Need to take a random sample rows because (hot damn!) 
+num.rows <- 5000
+row.sample <- sample(1:nrow(log.licenses), num.rows)
+
+# Take the sample
+license.sample <- log.licenses[row.sample,]
+
+resarea.comarea <- dist(cbind(license.sample$comarea, license.sample$resarea), method="euclidian")
+rc.hc <- hclust(resarea.comarea)
+
+for(i in 3:12) {
+    license.sample[,paste("CUT", i, sep=".")] <- cutree(rc.hc, i)
 }
 
-## Attempt 1: Root-squared difference in residential area and commericial area
-
-resarea.comarea <- dist(cbind(log.licenses$comarea, log.licenses$resarea), method="euclidian")
