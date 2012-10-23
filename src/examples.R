@@ -35,6 +35,9 @@ pca <- princomp(log.licenses[, 1:9])
 summary(pca) # Suggests 3 components are not really enough
 
 plot(pca$scores[, 1:2])
+# Confirm that PCA isn't just tracking boroughs
+plot(pca$scores[, 1:2], col = factor(licenses$Premise_Borough))
+
 plot(pca$scores[, 2:3])
 plot(pca$scores[, 3:4])
 plot(pca$scores[, 4:5])

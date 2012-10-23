@@ -18,3 +18,9 @@ ggplot(log.licenses, aes(x = strgearea)) + geom_histogram()
 ggplot(log.licenses, aes(x = factryarea)) + geom_histogram()
 
 ggplot(licenses, aes(x = bbl, y = blockface)) + geom_point()
+
+color.licenses <- licenses
+color.licenses <- subset(color.licenses, !is.na(x) & !is.na(y))
+color.licenses <- transform(color.licenses, Cluster = kmeans(color.licenses[, c("x", "y")], 5)$cluster)
+ggplot(color.licenses, aes(x = x, y = y, color = factor(Cluster))) + geom_point() + theme(legend.position = "none")
+ggsave("color_licenses.pdf")
