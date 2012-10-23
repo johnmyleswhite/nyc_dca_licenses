@@ -1,3 +1,6 @@
+# BBL is not really numeric
+licenses <- transform(licenses, bbl = as.character(bbl))
+
 numeric.variables <- c()
 
 for (j in 1:ncol(licenses))
