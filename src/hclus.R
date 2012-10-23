@@ -45,3 +45,32 @@ for(i in 3:12) {
     license.sample[,paste("CUT", i, sep=".")] <- cutree(rc.hc, i)
 }
 
+rc.plot <- ggplot(license.sample, aes(x=x, y=y))+geom_point(aes(color=as.factor(CUT.5), size=0.01, alpha=0.25)) +
+    facet_wrap(~factor(CUT.5)) +
+    scale_color_brewer(type="qual", palette="Dark2", name="Cluster Partition") + 
+    scale_size(limits=c(0,1), guide="none") + 
+    scale_alpha(guide="none")
+
+## Attempt 2: full feature set dissimilarites
+
+full.feature <- log.licenses[1:2500,]
+
+full.hc <- hclust(as.dist(dissimilarity))
+
+for(i in 3:12) {
+    full.feature[,paste("CUT", i, sep=".")] <- cutree(full.hc, i)
+}
+
+full.plot <- ggplot(full.feature, aes(x=x, y=y))+geom_point(aes(color=as.factor(CUT.5))) +
+    scale_color_brewer(type="qual", palette="Dark2")
+    
+    
+## Attempt 3: using business names
+
+# business.sample <- business.names[row.sample,]
+# 
+# business.hc <- hclust(dist(business.sample))
+# 
+# for(i in 3:12) {
+#     business.sample[,paste("CUT", i, sep=".")] <- cutree(business.hc, i)
+# }
