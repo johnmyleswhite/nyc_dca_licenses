@@ -1,5 +1,4 @@
 # First nine columns should be numeric.
-library("stringr")
 for (j in 1:9)
 {
   licenses[, j] <- as.numeric(str_replace(licenses[, j], ",", ""))	

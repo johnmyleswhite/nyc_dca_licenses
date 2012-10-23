@@ -39,7 +39,6 @@ plot(pca$scores[, 2:3])
 plot(pca$scores[, 3:4])
 plot(pca$scores[, 4:5])
 
-library("rgl")
 plot3d(pca$scores[, 1:3])
 plot3d(pca$scores[, 4:6])
 plot3d(pca$scores[, 7:9])
